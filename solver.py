@@ -74,7 +74,8 @@ class Parser:
 			else:
 				self.rounds.append(Mission(outcome, players))
 
-	def get_args(self):
+	@property
+	def args(self):
 		return { "resistance" : self.resistance_count,
 				 "spies" : self.spy_count,
 				 "rounds" : self.rounds,
@@ -143,5 +144,5 @@ if __name__ == '__main__':
 						required=True,
 						help="input file")
 	args = parser.parse_args()
-	solver = Solver(Parser(args.inputfile).get_args())
+	solver = Solver(Parser(args.inputfile).args)
 
